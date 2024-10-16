@@ -33,7 +33,7 @@ public class HomeController : Controller
     {
         return View();
     }
-    public IActionResult 
+
     
     public IActionResult Privacy()
     {
