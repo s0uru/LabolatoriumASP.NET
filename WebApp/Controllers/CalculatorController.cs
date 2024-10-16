@@ -1,45 +1,21 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using WebApp.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers;
 
-public class HomeController : Controller
+public class CalculatorController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
-    
-    /*
-     * Zadanie 1
-     * Utwórz metode Calculator oraz widok, w nim wyswietl tylko napis kalkulatora
-     * Dodaj link nawigayjny aplikacji do metody Calculator
-     * Wykonaj commin i wyslij kod do repozytorium - push
-     *
-     * Zadanie domowe
-     * Napisz metodę Age, która przyjmuje parametr z datą urodzin i wyświetla wiek
-     * w latach, miesiącach i dniach.
-     */
-
+    // GET
     public IActionResult Index()
     {
         return View();
     }
-
-    public IActionResult About()
-    {
-        return View();
-    }
-    public IActionResult 
     
-    public IActionResult Privacy()
+    public IActionResult Form()
     {
         return View();
     }
-    public IActionResult Calculator(Operator? op, double? x, double? y)
+    
+    public IActionResult Result(Operator? op, double? x, double? y)
     {
         //https://localhost:7271/Home/Calculator?op=add&x=4&y=1,5
         //var op =Request.Query["op"];
@@ -83,15 +59,8 @@ public class HomeController : Controller
         ViewBag.Y = y;
         return View();
     }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
+    public enum Operator
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        Add, Sub, Nul, Div
     }
-}
-
-public enum Operator
-{
-    Add, Sub, Nul, Div
 }
